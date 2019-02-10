@@ -1,0 +1,112 @@
+/*** Page Layout ***/
+
+html, body {
+  background-color: silver;
+}
+
+body {
+  margin: 0 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+#status {
+  margin: 0 0 16px 0;
+
+  font-size: 40px;
+  font-family: monospace;
+}
+
+/*** Styles for the game board ***/
+
+#board {
+  /* Use the grid layout method, to lay out our nine elements. */
+  display: grid;
+
+  /* The grid will consist of three rows and three columns.  Rows will be 20vh
+   * tall, and columns will be 20vh wide. */
+  grid: 20vh 20vh 20vh / 20vh 20vh 20vh;
+
+  /* Have a 1vh gap between each cell. */
+  gap: 1vh;
+
+  /* Make the background of the grid black to look like
+   * lines between the gaps. */
+  background: black;
+
+  /* This will center the grid in the available space. */
+  margin: auto;
+  
+}
+
+#board button {
+  background: grey;
+  padding: 0;
+  /*border: none;*/
+  border-color: black;
+
+  font-family: monospace;
+  font-size: 60px;
+
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+}
+
+/* Grey out a button when disabled (i.e. already filled-in, or game is over. */
+#board button:disabled {
+  cursor: not-allowed;
+  background-color: slateblue;
+}
+
+/* These next two rules give a background color to the grid buttons
+ * depending on whose turn it is. Or, if there is a winner, it highlights the
+ * winning row. */
+
+.turn-X #board button:not(:disabled):hover,
+.turn-X #board button:not(:disabled):focus,
+.turn-X #board button.winner {
+  background-color: #90caf9;
+}
+
+.turn-O #board button:not(:disabled):hover,
+.turn-O #board button:not(:disabled):focus,
+.turn-O #board button.winner {
+  background-color: #e57373;
+}
+
+/* These next two rules color the turn labels, and the Xs and Os on the game
+ * board. */
+
+.turn-X #status,
+#board button.value-X {
+  color: aqua;
+}
+
+.turn-O #status,
+#board button.value-O {
+  color: hotpink;
+}
+
+#reset {
+  height: 50px;
+  font-size: 30px;
+
+  margin: 0 auto 0 0;
+  background-color: grey;
+  border-color: black;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+}
+
+#reset:hover {
+  background-color: #90caf9 ;
+
+}
